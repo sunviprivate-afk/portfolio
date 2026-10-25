@@ -154,3 +154,37 @@ export function useMagnet(strength = 0.25) {
   }, [strength]);
   return ref;
 }
+
+/** Pointer-driven 3D tilt. Sets CSS vars --rx --ry --sx --sy --gx --gy on the element. */
+export function useTilt(maxX = 12, maxY = 16, shadow = 10) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(hover: none)").matches) return;
+    const move = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--rx", `${(0.5 - py) * maxX}deg`);
+      el.style.setProperty("--ry", `${(px - 0.5) * maxY}deg`);
+      el.style.setProperty("--sx", `${shadow - (px - 0.5) * shadow * 1.6}px`);
+      el.style.setProperty("--sy", `${shadow + (0.5 - py) * shadow * 1.2}px`);
+      el.style.setProperty("--gx", `${px * 100}%`);
+      el.style.setProperty("--gy", `${py * 100}%`);
+    };
+    const enter = () => el.classList.add("is-active");
+    const leave = () => {
+      el.classList.remove("is-active");
+      ["--rx", "--ry", "--sx", "--sy", "--gx", "--gy"].forEach((v) => el.style.removeProperty(v));
+    };
+    el.addEventListener("pointerenter", enter);
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerleave", leave);
+    return () => {
+      el.removeEventListener("pointerenter", enter);
+      el.removeEventListener("pointermove", move);
+      el.removeEventListener("pointerleave", leave);
+    };
+  }, [maxX, maxY, shadow]);
+  return ref;
+}

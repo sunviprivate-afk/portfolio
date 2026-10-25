@@ -1,12 +1,12 @@
 export const EMAIL = "sunvi@sunvizamin.bro.bd";
 
 export const sections = [
-  ["Work", "work"],
+  ["Built", "work"],
   ["About", "about"],
-  ["Can do", "services"],
+  ["Toolbox", "services"],
   ["Path", "experience"],
   ["Lab", "lab"],
-  ["Notes", "notes"],
+  ["Log", "notes"],
   ["Contact", "contact"],
 ] as const;
 
