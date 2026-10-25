@@ -8,8 +8,10 @@ function Words({ text, from = 0, step = 60 }: { text: string; from?: number; ste
   return (
     <>
       {text.split(" ").map((w, i) => (
-        <span key={i} className="word">
-          <span style={d(from + i * step)}>{w}</span>{" "}
+        <span key={i}>
+          <span className="word">
+            <span style={d(from + i * step)}>{w}</span>
+          </span>{" "}
         </span>
       ))}
     </>
