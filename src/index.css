@@ -1,25 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: light;
+@theme {
+  --color-paper: #f3efe6;
+  --color-ink: #141414;
+  --color-rule: #141414;
+  --color-muted: #6b665c;
+  --color-accent: #c8361b;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 html {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  line-height: 1.55;
-  background: #fff;
-  color: #111;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
-a {
-  color: inherit;
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rule {
+  border-top: 1px solid var(--color-rule);
+}
+
+.link {
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.link:hover {
+  color: var(--color-accent);
 }
 
-a:hover {
-  background: #111;
-  color: #fff;
-  text-decoration: none;
+.btn {
+  display: inline-block;
+  border: 1px solid var(--color-ink);
+  padding: 0.7rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 120ms, color 120ms;
+}
+.btn:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee > span {
+  display: inline-block;
+  padding-right: 3rem;
+  animation: scroll 28s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee > span { animation: none; }
 }
