@@ -1,69 +1,58 @@
-import type { CSSProperties, RefObject } from "react";
-import { useMagnet } from "../lib/hooks";
-import { SpecCard } from "./SpecCard";
-
-const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
-
-function Words({ text, from = 0, step = 60 }: { text: string; from?: number; step?: number }) {
-  return (
-    <>
-      {text.split(" ").map((w, i) => (
-        <span key={i}>
-          <span className="word">
-            <span style={d(from + i * step)}>{w}</span>
-          </span>{" "}
-        </span>
-      ))}
-    </>
-  );
-}
+import type { CSSProperties } from "react";
+import { CITY, EMAIL, NAME } from "../lib/data";
+import { useCopy, useTilt } from "../lib/hooks";
+import { Avatar } from "./Avatar";
+import { I } from "./Icons";
 
 export function Hero() {
-  const m1 = useMagnet();
-  const m2 = useMagnet();
+  const tilt = useTilt(8, 10);
+  const { copied, copy } = useCopy(EMAIL);
   return (
-    <section className="relative overflow-hidden">
-      <div className="columns pointer-events-none absolute inset-0 -z-10" aria-hidden />
-      <svg className="watermark" viewBox="0 0 100 100" aria-hidden>
-        <g fill="currentColor">
-          {[0, 45, 90, 135].map((a) => (
-            <rect key={a} x="44" y="2" width="12" height="96" rx="6" transform={`rotate(${a} 50 50)`} />
-          ))}
-        </g>
-      </svg>
-
-      <div className="wrap pb-20 pt-10 md:pb-28 md:pt-16">
-        <div className="label flex flex-wrap items-center justify-between gap-2 border-b border-ink pb-4 text-muted" data-reveal>
-          <span>// Student × Self-taught — Kushtia, Bangladesh</span>
-          <span className="coords">23.90° N / 89.13° E — Kushtia, BD</span>
-        </div>
-
-        <h1 className="display-hero mt-10 text-[clamp(4rem,15vw,13rem)]">
-          <span className="word"><span style={d(300)}>Sunvi</span></span>
-          <br />
-          <span className="word md:ml-[0.55em]">
-            <span style={d(420)}>
-              Zamin<span className="text-accent">✳</span>
-            </span>
-          </span>
-        </h1>
-
-        <div className="mt-14 grid gap-10 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-            <p className="lede text-[clamp(1.4rem,2.6vw,2.15rem)]">
-              <Words from={700} text="Student in Kushtia, Bangladesh, teaching myself to build for the web. I learn by making real things. This site, and every experiment on it, was written by hand." />
-            </p>
-            <p className="label mt-6 text-muted" data-reveal style={d(1200)}>
-              Currently deep in <span className="text-accent">TypeScript</span>
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-6" data-reveal style={d(1300)}>
-              <a ref={m2 as RefObject<HTMLAnchorElement>} href="#work" className="label u">See what I've built ↓</a>
-              <a ref={m1 as RefObject<HTMLAnchorElement>} href="#contact" className="btn">Say hello ↗</a>
+    <section id="home" className="scroll-mt-24 pt-8 md:pt-14">
+      <div className="grid gap-6 lg:grid-cols-12">
+        {/* portrait card */}
+        <div className="tilt-wrap lg:col-span-5" data-reveal="scale">
+          <div ref={tilt} className="tilt card card-glow relative flex aspect-[4/5] items-center justify-center overflow-hidden p-6 lg:aspect-auto lg:h-full">
+            <div className="glare" />
+            <div className="absolute inset-0 bg-[radial-gradient(40rem_20rem_at_50%_120%,rgba(34,211,238,.18),transparent_60%)]" />
+            <div className="relative">
+              <div className="orbit" />
+              <div className="float"><Avatar size={220} className="shadow-[0_30px_80px_-20px_rgba(34,211,238,.45)]" /></div>
+            </div>
+            <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-line bg-bg/60 px-3 py-1.5 text-xs backdrop-blur">
+              <span className="dot" /> Open to contact anytime
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+              <div>
+                <p className="label">Based in</p>
+                <p className="text-sm font-medium">{CITY}</p>
+              </div>
+              <p className="mono text-xs text-muted">23.90° N · 89.13° E</p>
             </div>
           </div>
-          <div className="md:col-span-4 md:col-start-9">
-            <SpecCard />
+        </div>
+
+        {/* intro card */}
+        <div className="card relative overflow-hidden p-7 md:p-10 lg:col-span-7" data-reveal style={{ "--d": "120ms" } as CSSProperties}>
+          <p className="label">Say hello to</p>
+          <h1 className="h-display mt-4 text-5xl md:text-7xl">
+            <span className="text-gradient">{NAME.split(" ")[0]}</span>
+            <br />{NAME.split(" ")[1]}
+          </h1>
+          <p className="mt-5 max-w-xl text-lg text-muted">
+            Student in Kushtia, Bangladesh, teaching myself to build for the web. I learn by making real things: this site, and every experiment on it, was written by hand.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#contact" className="btn btn-primary">Let's talk <I.arrow width={16} height={16} /></a>
+            <a href="#work" className="btn">See my work</a>
+            <button type="button" onClick={copy} className="btn" title="Copy email"><I.copy width={16} height={16} /> {copied ? "Copied" : EMAIL}</button>
           </div>
+          <div className="mt-10 grid grid-cols-2 gap-4 border-t border-line pt-6 sm:grid-cols-4">
+            {[["Role", "Student"], ["Focus", "Front-end"], ["Stack", "React · TS"], ["Timezone", "UTC+6"]].map(([k, v]) => (
+              <div key={k}><p className="label">{k}</p><p className="mt-1 text-sm font-medium">{v}</p></div>
+            ))}
+          </div>
+          <I.down className="absolute bottom-6 right-6 animate-bounce text-muted" />
         </div>
       </div>
     </section>

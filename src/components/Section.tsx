@@ -1,18 +1,14 @@
 import type { ReactNode } from "react";
 
-export function Section({
-  id, eyebrow, title, children, className = "", aside,
-}: { id: string; eyebrow: string; title: string; children: ReactNode; className?: string; aside?: ReactNode }) {
+export function Section({ id, eyebrow, title, children, intro }: { id: string; eyebrow: string; title: string; children: ReactNode; intro?: string }) {
   return (
-    <section id={id} className={`wrap scroll-mt-20 py-20 md:py-28 ${className}`}>
-      <div className="grid gap-8 md:grid-cols-12">
-        <div className="md:col-span-3" data-reveal>
-          <p className="label text-muted">{eyebrow}</p>
-          {aside}
+    <section id={id} className="scroll-mt-24 py-16 md:py-24">
+      <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between" data-reveal>
+        <div>
+          <p className="label">// {eyebrow}</p>
+          {intro && <p className="mt-3 max-w-md text-sm text-muted">{intro}</p>}
         </div>
-        <div className="md:col-span-9" data-reveal>
-          <h2 className="lede text-[clamp(1.7rem,3.4vw,2.8rem)]">{title}</h2>
-        </div>
+        <h2 className="h-section text-3xl md:text-right md:text-4xl">{title}</h2>
       </div>
       {children}
     </section>

@@ -1,46 +1,34 @@
 import type { CSSProperties } from "react";
+import { stats } from "../lib/data";
+import { useCountUp } from "../lib/hooks";
+import { Section } from "./Section";
 
-const paras = [
-  "Most of my free time goes into how websites actually work: how a browser turns text into layout, why JavaScript does what it does, what happens between pressing enter and seeing a page.",
-  "When I get stuck I read the docs first, build the smallest version of the problem, and write down what I found so I never have to find it twice. The Log below comes from that habit.",
-  "I live in Kushtia, Khulna Division, Bangladesh. If you are nearby and building something, I want to hear about it.",
-];
-
-const facts = [
-  ["Name", "Sunvi Zamin"],
-  ["Role", "Student"],
-  ["City", "Kushtia, Bangladesh"],
-  ["Timezone", "UTC+6 (Asia/Dhaka)"],
-  ["Languages", "Bangla, English"],
-  ["Tools", "VS Code, Git, a notebook"],
-];
+function Stat({ value, suffix, label, i }: { value: number; suffix: string; label: string; i: number }) {
+  const { ref, value: v } = useCountUp(value);
+  return (
+    <div ref={ref} className="card card-glow p-5" data-reveal style={{ "--d": `${i * 90}ms` } as CSSProperties}>
+      <p className="h-display text-4xl tabular-nums md:text-5xl">{v}<span className="text-accent">{suffix}</span></p>
+      <p className="label mt-3">{label}</p>
+    </div>
+  );
+}
 
 export function About() {
   return (
-    <section id="about" className="wrap scroll-mt-20 py-20 md:py-28">
-      <div className="grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-3" data-reveal>
-          <p className="label text-muted">About</p>
-        </div>
-        <div className="md:col-span-6">
-          <p className="lede text-[clamp(1.7rem,3.4vw,2.8rem)]" data-reveal>
-            I would rather understand one thing properly than skim ten.
-          </p>
-          <div className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink/90">
-            {paras.map((p, i) => (
-              <p key={i} data-reveal style={{ "--d": `${i * 120}ms` } as CSSProperties}>{p}</p>
-            ))}
+    <Section id="about" eyebrow="Biography" title="A student who learns by building.">
+      <div className="grid gap-6 lg:grid-cols-12">
+        <div className="card p-7 lg:col-span-7" data-reveal>
+          <p className="text-xl font-medium leading-snug md:text-2xl">I would rather understand one thing properly than skim ten.</p>
+          <div className="mt-6 space-y-4 text-muted">
+            <p>Most of my free time goes into how websites actually work: how a browser turns text into layout, why JavaScript does what it does, what happens between pressing enter and seeing a page.</p>
+            <p>When I get stuck I read the docs first, build the smallest version of the problem, and write down what I found so I never have to find it twice. The Notes section comes from that habit.</p>
+            <p>I live in Kushtia, Khulna Division, Bangladesh. If you are nearby and building something, I want to hear about it.</p>
           </div>
         </div>
-        <dl className="md:col-span-3" data-reveal="left" style={{ "--d": "200ms" } as CSSProperties}>
-          {facts.map(([k, v]) => (
-            <div key={k} className="flex justify-between gap-4 border-b border-line py-3 first:border-t first:border-t-ink">
-              <dt className="label text-muted">{k}</dt>
-              <dd className="mono text-right text-xs">{v}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="grid grid-cols-2 gap-4 lg:col-span-5">
+          {stats.map((s, i) => <Stat key={s.label} {...s} i={i} />)}
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }
