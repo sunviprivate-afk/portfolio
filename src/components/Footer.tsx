@@ -27,7 +27,7 @@ export function Footer() {
               </button>
             </div>
             <p className="mt-10 max-w-prose leading-relaxed text-paper/75" data-reveal style={{ "--d": "260ms" } as CSSProperties}>
-              There is no form, just email. I read everything that comes in and reply to most of it. Questions, corrections to anything on this page, or an invitation to work on something together are all welcome.
+              No form, just email. I read everything and reply to most of it. Questions, corrections to anything on this page, or an invitation to build something together are all welcome.
             </p>
           </div>
         </div>

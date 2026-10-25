@@ -4,7 +4,7 @@ import { Section } from "./Section";
 
 export function Notes() {
   return (
-    <Section id="notes" eyebrow="Notes" title="Short write-ups of things I had to learn the hard way.">
+    <Section id="notes" eyebrow="Notes" title="Things I learned the hard way, written down so you do not have to.">
       <div className="mt-12 border-t border-ink">
         {notes.map((n, i) => (
           <details key={n.title} data-reveal style={{ "--d": `${i * 90}ms` } as CSSProperties} className="group border-b border-ink">

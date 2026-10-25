@@ -16,7 +16,7 @@ export const work = [
     title: "This website",
     kind: "Site",
     year: "2026",
-    body: "Designed and coded by hand in React, TypeScript and Tailwind. Scroll reveals, a section rail, a live clock, and no third-party UI kit. The thing you are reading is the project.",
+    body: "Designed and coded from a blank file. React, TypeScript, Tailwind, one CSS file for motion. No template, no UI kit. You are looking at it.",
     tags: ["React", "TypeScript", "Tailwind", "Vite"],
     href: "#top",
   },
@@ -25,7 +25,7 @@ export const work = [
     title: "The Lab",
     kind: "Experiments",
     year: "2026",
-    body: "Three small interactive tools further down this page: a study timer, a colour contrast checker, and an easing-curve playground. Each one started as a question I could not answer.",
+    body: "Three working tools further down: a study timer, a contrast checker, an easing playground. Each one started as a question I could not answer.",
     tags: ["State", "Canvas-free", "Accessibility"],
     href: "#lab",
   },
@@ -34,7 +34,7 @@ export const work = [
     title: "Notes",
     kind: "Writing",
     year: "2026 →",
-    body: "Short write-ups of things I got wrong and then understood. Written for the version of me from a month ago. They open in place; no separate blog yet.",
+    body: "Short write-ups of things I got wrong, then understood. Written for the me of a month ago. They open in place.",
     tags: ["Writing", "Learning in public"],
     href: "#notes",
   },
@@ -51,22 +51,22 @@ export const services = [
   {
     n: "01",
     title: "Small static sites",
-    body: "A clean page for a shop, a club, a teacher, a friend. Fast, readable on a cheap phone, no page builder.",
+    body: "A clean page for a shop, a club, a teacher. Fast, readable on a cheap phone, no page builder.",
   },
   {
     n: "02",
     title: "Fixing layouts",
-    body: "The thing that overflows on mobile, the footer that will not stay down, the flex row that refuses to wrap. I enjoy these.",
+    body: "The div that overflows on mobile. The footer that will not stay down. The flex row that refuses to wrap. I like these.",
   },
   {
     n: "03",
     title: "Small React components",
-    body: "Tabs, accordions, timers, forms with sensible validation. Typed, keyboard-friendly, documented in a sentence.",
+    body: "Tabs, accordions, timers, forms that validate sensibly. Typed, keyboard-friendly, explained in a sentence.",
   },
   {
     n: "04",
     title: "Learning together",
-    body: "If you are also a student working through this stuff, I am happy to pair, swap notes, or review each other's code.",
+    body: "Also a student working through this? Happy to pair, swap notes, or review each other's code.",
   },
 ];
 
@@ -74,22 +74,22 @@ export const experience = [
   {
     when: "2024",
     title: "First HTML file",
-    body: "Opened Notepad, typed a heading, double-clicked the file, saw it in the browser. Spent the next month making it less ugly.",
+    body: "Typed a heading in Notepad, double-clicked the file, saw it in a browser. Spent a month making it less ugly.",
   },
   {
     when: "2025",
     title: "CSS, properly",
-    body: "Stopped guessing. Learned the box model, flexbox and grid from the specification and from MDN instead of copying snippets.",
+    body: "Stopped guessing. Learned the box model, flexbox and grid from MDN and the spec instead of pasting snippets.",
   },
   {
     when: "2025",
     title: "JavaScript",
-    body: "DOM, events, fetch, promises. Built small things that broke in interesting ways and wrote down why.",
+    body: "DOM, events, fetch, promises. Built small things that broke in interesting ways, and wrote down why.",
   },
   {
     when: "2026",
     title: "React, TypeScript, Git",
-    body: "Started this site. Learned branches and pull requests by using them for every change, including this sentence.",
+    body: "Started this site. Learned branches and pull requests by using them for every change, including this one.",
   },
   {
     when: "Now",

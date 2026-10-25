@@ -4,7 +4,7 @@ import { Section } from "./Section";
 
 export function Work() {
   return (
-    <Section id="work" eyebrow="Work" title="Three things that exist, all on this page.">
+    <Section id="work" eyebrow="Work" title="Three things that exist. All of them are on this page.">
       <div className="mt-12 grid gap-px bg-ink md:grid-cols-3">
         {work.map((w, i) => (
           <a

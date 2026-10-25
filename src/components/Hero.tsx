@@ -48,8 +48,8 @@ export function Hero() {
 
         <div className="mt-14 grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <p className="display text-[clamp(1.4rem,2.6vw,2.1rem)] font-medium leading-tight tracking-tight">
-              <Words from={700} text="Student from Kushtia, Bangladesh, teaching myself to build for the web. I learn by making real things: this site and every experiment on it were built by hand, one lesson at a time." />
+            <p className="lede text-[clamp(1.4rem,2.6vw,2.15rem)]">
+              <Words from={700} text="Student in Kushtia, Bangladesh, teaching myself to build for the web. I learn by making real things. This site, and every experiment on it, was written by hand." />
             </p>
             <p className="label mt-6 text-muted" data-reveal style={d(1200)}>
               Currently deep in <span className="text-accent">TypeScript</span>

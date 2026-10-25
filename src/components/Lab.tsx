@@ -163,7 +163,7 @@ export function Lab() {
   }, []);
 
   return (
-    <Section id="lab" eyebrow="Lab" title="Three working tools. Click things." className="rule">
+    <Section id="lab" eyebrow="Lab" title="Three working tools. Go on, click things." className="rule">
       <div ref={wrap} className="mt-12 grid gap-px bg-ink lg:grid-cols-3">
         {[Timer, Contrast, Easing].map((C, i) => (
           <div key={i} data-reveal style={{ "--d": `${i * 120}ms` } as CSSProperties} className="bg-paper p-6">

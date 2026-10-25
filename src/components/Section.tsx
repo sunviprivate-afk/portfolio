@@ -11,7 +11,7 @@ export function Section({
           {aside}
         </div>
         <div className="md:col-span-9" data-reveal>
-          <h2 className="display text-[clamp(1.7rem,3.4vw,2.8rem)] leading-tight">{title}</h2>
+          <h2 className="lede text-[clamp(1.7rem,3.4vw,2.8rem)]">{title}</h2>
         </div>
       </div>
       {children}
